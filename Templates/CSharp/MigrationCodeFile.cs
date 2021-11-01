@@ -2,9 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using FluentMigrator.Expressions;
 
-namespace FluentMigrator.NHibernateGenerator.Templates.CSharp
+namespace FluentMigrator.NHibernateGenerator.SF.Templates.CSharp
 {
     internal class MigrationCodeFile : ITemplate
     {

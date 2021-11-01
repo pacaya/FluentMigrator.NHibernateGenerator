@@ -3,16 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
-
-using FluentMigrator.Builders.Alter;
 using FluentMigrator.Expressions;
-using FluentMigrator.Infrastructure.Extensions;
 using FluentMigrator.Model;
-using FluentMigrator.SqlServer;
-using NHibernate.Cfg;
-using NHibernate.Dialect;
 
-namespace FluentMigrator.NHibernateGenerator
+namespace FluentMigrator.NHibernateGenerator.SF
 {
     public class DifferentialMigration : IEnumerable<DifferentialExpression>
     {

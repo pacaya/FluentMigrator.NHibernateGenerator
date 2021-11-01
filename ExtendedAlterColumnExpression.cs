@@ -1,12 +1,7 @@
 ﻿using FluentMigrator.Expressions;
 using FluentMigrator.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FluentMigrator.NHibernateGenerator
+namespace FluentMigrator.NHibernateGenerator.SF
 {
     public class ExtendedAlterColumnExpression : AlterColumnExpression
     {

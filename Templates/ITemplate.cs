@@ -1,6 +1,6 @@
 ﻿using System.IO;
 
-namespace FluentMigrator.NHibernateGenerator.Templates
+namespace FluentMigrator.NHibernateGenerator.SF.Templates
 {
     public interface ITemplate
     {

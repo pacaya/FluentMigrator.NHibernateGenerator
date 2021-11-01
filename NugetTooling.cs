@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FluentMigrator.NHibernateGenerator
+namespace FluentMigrator.NHibernateGenerator.SF
 {
     public static class NugetTooling
     {
@@ -14,15 +11,11 @@ namespace FluentMigrator.NHibernateGenerator
         {
             string targetFileName = Path.GetFileName(targetPath);
             string targetDir = Path.GetDirectoryName(targetPath);
-            
-            AppDomainSetup info = new AppDomainSetup
-            {
-                ShadowCopyFiles = "true",
-                ApplicationBase = targetDir,
-                ConfigurationFile = targetFileName + ".config"
-            };
 
-            var appDomain = AppDomain.CreateDomain("NHMigrations" + Convert.ToBase64String(Guid.NewGuid().ToByteArray()), null, info);
+            // AppDomainSetup info = new AppDomainSetup();
+            // info.ApplicationBase = targetDir;
+
+            var appDomain = AppDomain.CreateDomain("NHMigrations" + Convert.ToBase64String(Guid.NewGuid().ToByteArray()));
 
             var proxy = (MigrationProxy)appDomain.CreateInstanceAndUnwrap(typeof(MigrationProxy).Assembly.FullName, typeof(MigrationProxy).FullName);
 

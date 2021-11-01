@@ -1,13 +1,9 @@
 ﻿using FluentMigrator.Infrastructure.Extensions;
 using FluentMigrator.Model;
 using FluentMigrator.SqlServer;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace FluentMigrator.NHibernateGenerator
+namespace FluentMigrator.NHibernateGenerator.SF
 {
     public static class Extensions
     {

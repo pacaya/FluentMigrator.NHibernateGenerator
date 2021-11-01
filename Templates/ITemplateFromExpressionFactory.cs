@@ -1,6 +1,6 @@
 using FluentMigrator.Expressions;
 
-namespace FluentMigrator.NHibernateGenerator.Templates
+namespace FluentMigrator.NHibernateGenerator.SF.Templates
 {
     public interface ITemplateFromExpressionFactory
     {

@@ -1,9 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace FluentMigrator.NHibernateGenerator.Templates.CSharp
+namespace FluentMigrator.NHibernateGenerator.SF.Templates.CSharp
 {
     public class ExecuteSqlStatementExpressionTemplate : ExpressionTemplate<Expressions.ExecuteSqlStatementExpression>
     {

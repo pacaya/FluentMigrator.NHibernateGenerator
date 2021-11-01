@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace FluentMigrator.NHibernateGenerator.Templates.CSharp
+namespace FluentMigrator.NHibernateGenerator.SF.Templates.CSharp
 {
     public class AlterDefaultConstraint : ExpressionTemplate<Expressions.AlterDefaultConstraintExpression>
     {

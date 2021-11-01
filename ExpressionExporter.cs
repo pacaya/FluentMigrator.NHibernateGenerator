@@ -14,8 +14,9 @@ using NHibernate.Mapping;
 using NHibernate.SqlTypes;
 using NHibernate.Util;
 using Environment = NHibernate.Cfg.Environment;
+using Index = NHibernate.Mapping.Index;
 
-namespace FluentMigrator.NHibernateGenerator
+namespace FluentMigrator.NHibernateGenerator.SF
 {
     public class ExpressionExporter : IEnumerable<IMigrationExpression>
     {

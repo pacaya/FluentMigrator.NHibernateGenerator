@@ -1,9 +1,7 @@
-using System;
 using System.IO;
 using System.Linq;
-using FluentMigrator.Model;
 
-namespace FluentMigrator.NHibernateGenerator.Templates.CSharp
+namespace FluentMigrator.NHibernateGenerator.SF.Templates.CSharp
 {
     public class CreateForeignKeyExpressionTemplate : ExpressionTemplate<Expressions.CreateForeignKeyExpression>
     {

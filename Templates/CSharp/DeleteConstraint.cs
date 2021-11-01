@@ -1,8 +1,6 @@
-using System;
 using System.IO;
-using FluentMigrator.Model;
 
-namespace FluentMigrator.NHibernateGenerator.Templates.CSharp
+namespace FluentMigrator.NHibernateGenerator.SF.Templates.CSharp
 {
     public class DeleteConstraintExpressionTemplate : ExpressionTemplate<Expressions.DeleteConstraintExpression>
     {

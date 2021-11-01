@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using FluentMigrator.Expressions;
-using FluentMigrator.NHibernateGenerator.Templates.CSharp;
+using FluentMigrator.NHibernateGenerator.SF.Templates.CSharp;
 
-namespace FluentMigrator.NHibernateGenerator.Templates
+namespace FluentMigrator.NHibernateGenerator.SF.Templates
 {
     public class CSharpTemplateFromExpressionFactory : ITemplateFromExpressionFactory
     {

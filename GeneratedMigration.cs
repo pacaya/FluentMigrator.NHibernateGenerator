@@ -1,6 +1,6 @@
 using System;
 
-namespace FluentMigrator.NHibernateGenerator
+namespace FluentMigrator.NHibernateGenerator.SF
 {
     [Serializable]
     public class GeneratedMigration

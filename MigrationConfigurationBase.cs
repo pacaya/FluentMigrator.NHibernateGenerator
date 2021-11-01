@@ -5,12 +5,12 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using FluentMigrator.Expressions;
-using FluentMigrator.NHibernateGenerator.Templates;
+using FluentMigrator.NHibernateGenerator.SF.Templates;
 using Newtonsoft.Json;
 using NHibernate.Cfg;
 using NHibernate.Dialect;
 
-namespace FluentMigrator.NHibernateGenerator
+namespace FluentMigrator.NHibernateGenerator.SF
 {
     public abstract class MigrationConfigurationBase
     {
