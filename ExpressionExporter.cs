@@ -18,7 +18,7 @@ using Index = NHibernate.Mapping.Index;
 
 namespace FluentMigrator.NHibernateGenerator.SF
 {
-    public class ExpressionExporter : IEnumerable<IMigrationExpression>
+    internal class ExpressionExporter : IEnumerable<IMigrationExpression>
     {
         private readonly Configuration _cfg;
         private readonly Dialect _dialect;

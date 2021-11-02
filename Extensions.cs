@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace FluentMigrator.NHibernateGenerator.SF
 {
-    public static class Extensions
+    internal static class Extensions
     {
         public static ICollection<IndexIncludeDefinition> GetIncludes(this IndexDefinition index)
         {

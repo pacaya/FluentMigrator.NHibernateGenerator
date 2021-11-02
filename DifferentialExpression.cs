@@ -2,7 +2,7 @@
 
 namespace FluentMigrator.NHibernateGenerator.SF
 {
-    public class DifferentialExpression
+    internal class DifferentialExpression
     {
         public DifferentialExpression(IMigrationExpression upReversible)
         {

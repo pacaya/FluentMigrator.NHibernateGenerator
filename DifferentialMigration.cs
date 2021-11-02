@@ -8,7 +8,7 @@ using FluentMigrator.Model;
 
 namespace FluentMigrator.NHibernateGenerator.SF
 {
-    public class DifferentialMigration : IEnumerable<DifferentialExpression>
+    internal class DifferentialMigration : IEnumerable<DifferentialExpression>
     {
         private readonly List<IMigrationExpression> _fromSchema;
         private readonly List<IMigrationExpression> _toSchema;
