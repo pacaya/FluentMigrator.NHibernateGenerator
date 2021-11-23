@@ -5,7 +5,7 @@
     <Nullable>enable</Nullable>
     <RootNamespace>FluentMigrator.NHibernateGenerator.SF</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageVersion>0.5.0</PackageVersion>
+    <PackageVersion>0.5.1</PackageVersion>
     <LangVersion>9</LangVersion>
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
@@ -19,6 +19,9 @@
     <PackageReference Include="NHibernate" Version="5.3.10" />
     <PackageReference Include="System.Runtime" Version="4.3.1" />
     <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
   </ItemGroup>
 
 </Project>

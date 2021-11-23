@@ -12,6 +12,7 @@ using NHibernate.Engine;
 using NHibernate.Id;
 using NHibernate.Mapping;
 using NHibernate.SqlTypes;
+using NHibernate.Type;
 using NHibernate.Util;
 using Environment = NHibernate.Cfg.Environment;
 using Index = NHibernate.Mapping.Index;
@@ -280,9 +281,14 @@ namespace FluentMigrator.NHibernateGenerator.SF
         {
             var columnDefinition = new ColumnDefinition();
 
+            string? customType = null;
+            if (c.Value.Type is CustomType) {
+                var sqlTypeCode = c.GetSqlTypeCode(mapping);
+                customType = mapping.Dialect.GetTypeName(sqlTypeCode);
+            }
             columnDefinition.TableName = table.Name;
             columnDefinition.ColumnDescription = c.Comment;
-            columnDefinition.CustomType = c.SqlType;
+            columnDefinition.CustomType = customType; //c.SqlType;
             columnDefinition.Name = c.Name;
 
             columnDefinition.Type = GetSqlType(c, mapping);
