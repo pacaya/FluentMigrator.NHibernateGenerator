@@ -13,16 +13,16 @@ namespace FluentMigrator.NHibernateGenerator.SF
         private readonly List<IMigrationExpression> _fromSchema;
         private readonly List<IMigrationExpression> _toSchema;
 
-        public DifferentialMigration(List<IMigrationExpression> fromSchema, List<IMigrationExpression> toSchema)
+        public DifferentialMigration(List<IMigrationExpression>? fromSchema, List<IMigrationExpression>? toSchema)
         {
-            _fromSchema = fromSchema;
-            _toSchema = toSchema;
+            _fromSchema = fromSchema ?? new List<IMigrationExpression>();
+            _toSchema = toSchema ?? new List<IMigrationExpression>();
         }
 
 
         public IEnumerator<DifferentialExpression> GetEnumerator()
         {
-            if (_fromSchema == null || _fromSchema.Count == 0)
+            if (_fromSchema.Count == 0)
                 return _toSchema.Select(x => new DifferentialExpression(x, null)).GetEnumerator();
 
             var updatedTables = GetUpdatedTables();
@@ -143,7 +143,7 @@ namespace FluentMigrator.NHibernateGenerator.SF
                 From = fromPks.FirstOrDefault(f => AreSameConstraintName(f, t))
             })
                 .Where(x => x.From != null && !AreSameKeyDef(x.From, x.To))
-                .SelectMany(x => GetAlters(x.From, x.To));
+                .SelectMany(x => GetAlters(x.From!, x.To));
 
             return alteredTables.Concat(alteredPks);
         }
@@ -346,7 +346,7 @@ namespace FluentMigrator.NHibernateGenerator.SF
                 && MatchIndexColumns(fromIx.Columns, toIx.Columns) && MatchIndexIncludes(fromIx.GetIncludes(), toIx.GetIncludes());
         }
 
-        private IEnumerable<DifferentialExpression> GetAlters(CreateTableExpression from, CreateTableExpression to)
+        private IEnumerable<DifferentialExpression> GetAlters(CreateTableExpression? from, CreateTableExpression? to)
         {
             if (from == null || to == null) return Enumerable.Empty<DifferentialExpression>();
 
@@ -398,7 +398,7 @@ namespace FluentMigrator.NHibernateGenerator.SF
             return from.Name == to.Name;
         }
 
-        private bool AreSameTableDef(CreateTableExpression from, CreateTableExpression to)
+        private bool AreSameTableDef(CreateTableExpression? from, CreateTableExpression? to)
         {
             if (from == null || to == null || !AreSameTableName(from, to)) return false;
             return MatchCollection(from.Columns, to.Columns, AreSameColumnDef);
@@ -406,29 +406,29 @@ namespace FluentMigrator.NHibernateGenerator.SF
 
         static readonly DbType[] _dbTypesWithMAX = new[] { DbType.AnsiString, DbType.Binary, DbType.Xml , DbType.String };
         
-        private bool AreSameColumnDef(ColumnDefinition a, ColumnDefinition b)
+        private bool AreSameColumnDef(ColumnDefinition? a, ColumnDefinition? b)
         {
             //Special case to treat a string length of 1000000 as int.MaxValue
-            int? aSize = a == null ? null : _dbTypesWithMAX.Contains(a.Type.Value) && a.Size == 1000000 ? int.MaxValue : a.Size;
-            int? bSize = b == null ? null : _dbTypesWithMAX.Contains(b.Type.Value) && b.Size == 1000000 ? int.MaxValue : b.Size;
+            int? aSize = a == null ? null : _dbTypesWithMAX.Contains(a.Type!.Value) && a.Size == 1000000 ? int.MaxValue : a.Size;
+            int? bSize = b == null ? null : _dbTypesWithMAX.Contains(b.Type!.Value) && b.Size == 1000000 ? int.MaxValue : b.Size;
 
-            bool sameName = a.Name == b.Name;
-            bool sameType = a.Type == b.Type;
+            bool sameName = a?.Name == b?.Name;
+            bool sameType = a?.Type == b?.Type;
             bool sameSize = aSize == bSize;
-            bool samePrecision = a.Precision == b.Precision;
-            bool sameCustomType = a.CustomType == b.CustomType;
-            bool sameDefaultValue = Equals(a.DefaultValue, b.DefaultValue) || (a.DefaultValue is ColumnDefinition.UndefinedDefaultValue) && (b.DefaultValue is FluentMigrator.Model.ColumnDefinition.UndefinedDefaultValue);
-            bool sameIsForeignKey = a.IsForeignKey == b.IsForeignKey;
-            bool sameIsIdentity = a.IsIdentity == b.IsIdentity;
-            bool sameIsIndexed = a.IsIndexed == b.IsIndexed;
+            bool samePrecision = a?.Precision == b?.Precision;
+            bool sameCustomType = a?.CustomType == b?.CustomType;
+            bool sameDefaultValue = Equals(a?.DefaultValue, b?.DefaultValue) || (a?.DefaultValue is ColumnDefinition.UndefinedDefaultValue) && (b?.DefaultValue is FluentMigrator.Model.ColumnDefinition.UndefinedDefaultValue);
+            bool sameIsForeignKey = a?.IsForeignKey == b?.IsForeignKey;
+            bool sameIsIdentity = a?.IsIdentity == b?.IsIdentity;
+            bool sameIsIndexed = a?.IsIndexed == b?.IsIndexed;
             //bool sameIsPrimaryKey = a.IsPrimaryKey == b.IsPrimaryKey;
             //bool samePrimaryKeyName = a.PrimaryKeyName == b.PrimaryKeyName;
-            bool sameIsNullable = a.IsNullable == b.IsNullable;
-            bool sameIsUnique = a.IsUnique == b.IsUnique;
-            bool sameTableName = a.TableName == b.TableName;
-            bool sameModificationType = a.ModificationType == b.ModificationType;
-            bool sameColumnDescription = a.ColumnDescription == b.ColumnDescription;
-            bool sameCollationName = a.CollationName == b.CollationName;
+            bool sameIsNullable = a?.IsNullable == b?.IsNullable;
+            bool sameIsUnique = a?.IsUnique == b?.IsUnique;
+            bool sameTableName = a?.TableName == b?.TableName;
+            bool sameModificationType = a?.ModificationType == b?.ModificationType;
+            bool sameColumnDescription = a?.ColumnDescription == b?.ColumnDescription;
+            bool sameCollationName = a?.CollationName == b?.CollationName;
 
             bool isEverythingTheSame = sameName && sameType && sameSize && samePrecision && sameCustomType && sameDefaultValue && sameIsForeignKey &&
                 sameIsIdentity && sameIsIndexed /*&& sameIsPrimaryKey && samePrimaryKeyName*/ && sameIsNullable && sameIsUnique &&

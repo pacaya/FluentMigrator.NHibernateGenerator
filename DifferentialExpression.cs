@@ -9,13 +9,13 @@ namespace FluentMigrator.NHibernateGenerator.SF
             Up = upReversible;
             Down = upReversible.Reverse();
         }
-        public DifferentialExpression(IMigrationExpression up, IMigrationExpression down)
+        public DifferentialExpression(IMigrationExpression up, IMigrationExpression? down)
         {
             Up = up;
             Down = down;
         }
 
         public IMigrationExpression Up { get; set; }
-        public IMigrationExpression Down { get; set; }
+        public IMigrationExpression? Down { get; set; }
     }
 }

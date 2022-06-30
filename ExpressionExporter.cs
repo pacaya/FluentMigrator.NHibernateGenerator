@@ -237,10 +237,11 @@ namespace FluentMigrator.NHibernateGenerator.SF
             return table.ForeignKeyIterator
                 .Where(x => x.HasPhysicalConstraint)
                 .Select(fk => GetCreateForeignKeyExpression(table, fk))
-                .Where(x => x != null);
+                .Where(x => x != null)
+                .Select(x => x!);
         }
 
-        private static CreateForeignKeyExpression GetCreateForeignKeyExpression(Table table, ForeignKey fk)
+        private static CreateForeignKeyExpression? GetCreateForeignKeyExpression(Table table, ForeignKey fk)
         {
             if (fk.ReferencedTable == null) return null;
 
