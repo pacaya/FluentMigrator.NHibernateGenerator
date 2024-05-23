@@ -22,7 +22,7 @@ namespace FluentMigrator.NHibernateGenerator.SF
 
         public virtual string GetFileNamePrefix(long version)
         {
-            return version.ToString().PadLeft(8, '0') + "_";
+            return version.ToString().PadLeft(6, '0') + "_";
         }
         
         protected virtual bool FilterExpressions(List<IMigrationExpression> @from, List<IMigrationExpression> @to,

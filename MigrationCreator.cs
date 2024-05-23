@@ -21,11 +21,11 @@ namespace FluentMigrator.NHibernateGenerator.SF {
             var dir = Path.Combine(GetProjectPath(appName), migration.MigrationsDirectory);
             Directory.CreateDirectory(dir);
             
-            using (StreamWriter outputFile = new (Path.Combine(dir, $"{migration.FileNamePrefix}{name}.cs")))
+            using (StreamWriter outputFile = new (Path.Combine(dir, $"{migration.FileNamePrefix}1_{name}.cs")))
             {
                 outputFile.Write(migration.Code);
             }
-            using (StreamWriter outputFile = new (Path.Combine(dir, $"{migration.FileNamePrefix}Designer.cs")))
+            using (StreamWriter outputFile = new (Path.Combine(dir, $"{migration.FileNamePrefix}2_Designer.cs")))
             {
                 outputFile.Write(migration.Designer);
             }
